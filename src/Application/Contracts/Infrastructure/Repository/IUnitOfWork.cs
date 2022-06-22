@@ -7,6 +7,7 @@ namespace Application.Contracts.Infrastructure.Repository
 {
     public interface IUnitOfWork
     {
+        IChatEventRepository ChatEvents { get; }
         Task CompleteAsync();
     }
 }

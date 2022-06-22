@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Domain.Users;
+using Domain.ChatEvents;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence
@@ -17,6 +13,8 @@ namespace Infrastructure.Persistence
         {
             return base.Set<TEntity>();
         }
+
+        public virtual DbSet<ChatEvent> ChatEvents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

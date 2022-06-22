@@ -2,6 +2,7 @@ using System.Reflection;
 using API.Config.Extensions;
 using API.Middleware;
 using Application.Behaviours;
+using Application.Features.Queries;
 using Infrastructure;
 using Infrastructure.Helpers;
 using Infrastructure.Persistence;
@@ -36,12 +37,25 @@ var env = builder.Environment;
     services.AddApplicationServices();
     services.AddInfrastructureServices();
 
+    services.AddMediatR(typeof(GetChatByMinQueryHandler).GetTypeInfo().Assembly);
+    services.AddMediatR(typeof(GetChatByHourQueryHandler).GetTypeInfo().Assembly);
+
     services.AddMediatR(Assembly.GetExecutingAssembly());
     services.AddScoped(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
     services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
 }
 
 var app = builder.Build();
+
+//Configure Database Seed
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<DataContext>();
+    var logger = services.GetService<ILogger<DataContextSeed>>();
+
+    DataContextSeed.Initialize(services,logger);
+}
 
 // Configure the HTTP request pipeline.
 app.UseSwagger();
