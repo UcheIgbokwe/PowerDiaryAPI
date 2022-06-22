@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  powerdiary.api:
+    build:
+      context: .
+      dockerfile: src/API/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://+:80
+      - "EntityFramework:databaseName=PowerDiaryDatabase"
+    ports:
+      - "8000:80"
