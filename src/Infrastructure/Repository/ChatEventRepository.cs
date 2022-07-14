@@ -18,7 +18,7 @@ namespace Infrastructure.Repository
         {
         }
 
-        public async Task<IEnumerable<ChatEventResponses>> GetChatEventByHours()
+        public async Task<List<ChatEventResponses>> GetChatEventByHours()
         {
             try
             {
@@ -47,7 +47,7 @@ namespace Infrastructure.Repository
             }
         }
 
-        public async Task<IEnumerable<ChatEventResponses>> GetChatEventByMins()
+        public async Task<List<ChatEventResponses>> GetChatEventByMins()
         {
             try
             {

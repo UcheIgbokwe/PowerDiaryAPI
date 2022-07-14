@@ -14,11 +14,14 @@ namespace Infrastructure.Repository
         protected DataContext _dbcontext;
         internal DbSet<T> _dbSet;
         public readonly ILogger _logger;
+        public GenericRepository()
+        {
+        }
         public GenericRepository(DataContext dbContext, ILogger logger)
         {
             _dbcontext = dbContext;
             _logger = logger;
-            _dbSet = dbContext.Set<T>();
+            _dbSet = _dbcontext.Set<T>();
         }
         public void Add(T entity)
         {

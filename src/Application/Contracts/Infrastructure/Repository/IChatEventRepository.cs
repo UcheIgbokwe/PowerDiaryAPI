@@ -5,7 +5,7 @@ namespace Application.Contracts.Infrastructure.Repository
 {
     public interface IChatEventRepository
     {
-        Task<IEnumerable<ChatEventResponses>> GetChatEventByMins();
-        Task<IEnumerable<ChatEventResponses>> GetChatEventByHours();
+        Task<List<ChatEventResponses>> GetChatEventByMins();
+        Task<List<ChatEventResponses>> GetChatEventByHours();
     }
 }

@@ -9,6 +9,7 @@ namespace Infrastructure.Repository
         private readonly DataContext _dbContext;
         private readonly ILogger _logger;
         public IChatEventRepository ChatEvents { get; set; }
+        public IUserRepository UserEvents { get; set; }
 
         public UnitOfWork(DataContext dbContext, ILoggerFactory loggerFactory)
         {
@@ -16,6 +17,7 @@ namespace Infrastructure.Repository
             _logger = loggerFactory.CreateLogger("logs");
 
             ChatEvents = new ChatEventRepository(_dbContext, _logger);
+            UserEvents = new UserRepository(_dbContext, _logger);
         }
 
         public async Task CompleteAsync()

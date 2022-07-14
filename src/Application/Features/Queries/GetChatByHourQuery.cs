@@ -4,7 +4,7 @@ using MediatR;
 
 namespace Application.Features.Queries
 {
-    public class GetChatByHourQuery : IRequest<IEnumerable<ChatEventResponses>>
+    public class GetChatByHourQuery : IRequest<List<ChatEventResponses>>
     {
     }
 }

@@ -2,13 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Domain.Users;
 
 namespace Application.Contracts.Infrastructure.Repository
 {
-    public interface IUnitOfWork
+    public interface IUserRepository : IGenericRepository<User>
     {
-        IChatEventRepository ChatEvents { get; }
-        IUserRepository UserEvents { get; }
-        Task CompleteAsync();
+        void AddUser(User user);
     }
 }

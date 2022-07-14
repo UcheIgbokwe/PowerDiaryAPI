@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Application.Features.Queries
 {
-    public class GetChatByMinQuery : IRequest<IEnumerable<ChatEventResponses>>
+    public class GetChatByMinQuery : IRequest<List<ChatEventResponses>>
     {
     }
 }
