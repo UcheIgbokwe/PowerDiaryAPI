@@ -31,29 +31,12 @@ namespace API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetChatByMin")]
-        [ProducesResponseType(typeof(IEnumerable<ChatEventResponses>), statusCode: 200)]
+        [ProducesResponseType(typeof(List<ChatEventResponses>), statusCode: 200)]
         public async Task<IActionResult> GetChatByMin()
         {
-            try
-            {
-                var result =  await _mediator.Send(new GetChatByMinQuery());
+            var result =  await _mediator.Send(new GetChatByMinQuery());
 
-                if(result?.Any() == true)
-                {
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                if (ex is HttpStatusException httpException)
-                {
-                    return StatusCode((int) httpException.Status, httpException.Message);
-                }else{
-                    return BadRequest(ex.Message);
-                }
-            }
+            return Ok(result);
         }
 
         /// <summary>
@@ -61,29 +44,12 @@ namespace API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet("GetChatByHour")]
-        [ProducesResponseType(typeof(IEnumerable<ChatEventResponses>), statusCode: 200)]
+        [ProducesResponseType(typeof(List<ChatEventResponses>), statusCode: 200)]
         public async Task<IActionResult> GetChatByHour()
         {
-            try
-            {
-                var result =  await _mediator.Send(new GetChatByHourQuery());
+            var result =  await _mediator.Send(new GetChatByHourQuery());
 
-                if(result?.Any() == true)
-                {
-                    return Ok(result);
-                }
-
-                return NotFound();
-            }
-            catch (Exception ex)
-            {
-                if (ex is HttpStatusException httpException)
-                {
-                    return StatusCode((int) httpException.Status, httpException.Message);
-                }else{
-                    return BadRequest(ex.Message);
-                }
-            }
+            return Ok(result);
         }
     }
 }
